@@ -1,7 +1,7 @@
 import Paciente from "../entities/Paciente";
 import Procedimento from "../entities/Procedimento";
 import Profissional from "../entities/Profissional";
-import ProfissionalAtende from "../entities/ProfissionalAtente";
+import ProfissionalAtende from "../entities/ProfissionalAtende";
 import TipoSolicitacao from "../entities/TipoSolicitacao";
 
 export interface IPaciente {

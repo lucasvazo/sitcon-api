@@ -1,10 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from 'typeorm';
 import Paciente from './Paciente';
 import Procedimento from './Procedimento';
 import Profissional from './Profissional';
 
 @Entity()
-export class Agendamento {
+class Agendamento extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -26,3 +26,5 @@ export class Agendamento {
     @ManyToOne(() => Profissional)
     profissionalId: Profissional;
 }
+
+export default Agendamento;
