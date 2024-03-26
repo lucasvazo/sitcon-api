@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
-import Profissional from "./Profissional"; // Import Profissional entity
-import Procedimento from "./Procedimento"; // Import Procedimento entity
+import Profissional from "./Profissional";
+import Procedimento from "./Procedimento";
 
 @Entity('profissional_atende')
 class ProfissionalAtende extends BaseEntity {

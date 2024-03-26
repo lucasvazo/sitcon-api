@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne, OneToMany } from 'typeorm';
-import { Agendamento } from './Agendamento';
+import Agendamento from './Agendamento';
 import ProfissionalAtende from './ProfissionalAtende';
 import TipoSolicitacao from './TipoSolicitacao';
 
