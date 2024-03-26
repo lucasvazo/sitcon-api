@@ -1,4 +1,6 @@
-import { profissionalAtendeRepository, procedimentoRepository } from '../repositories/repositories';
+import { Request } from 'express';
+import { IAgendamento } from '../interfaces/interfaces';
+import { profissionalAtendeRepository, procedimentoRepository, agendamentoRepository } from '../repositories/repositories';
 
 class SolicitacaoService {
 
@@ -36,6 +38,36 @@ class SolicitacaoService {
         } )
 
         return { professionalProcedures }
+    }
+
+    static async createNewProcedure ( schedulePayload: IAgendamento ) {
+        const createAppointment = await agendamentoRepository.create(schedulePayload)
+        const storeAppointment = await agendamentoRepository.save(createAppointment)
+            .catch(error => error);
+        if (storeAppointment.driverError) {
+            throw new Error('Something went wrong, please try again');
+        }
+        return storeAppointment;
+
+    }
+
+    static async listScheduledAppointments () {
+        const allAppointments = await agendamentoRepository.find({
+            relations: ['pacienteId', 'profissionalId', 'procedimentoId']
+        })
+        return allAppointments;
+    }
+
+    static async deleteAppointment ( appointmentId: number ) {
+        const findAppointment = await agendamentoRepository.findOne({ where: { id: appointmentId } })
+        if (!findAppointment) {
+            throw new Error('Appointment not found, try again with a valid id.');
+        } else {
+            const {id} = findAppointment;
+            const deletedAppointment = await agendamentoRepository.delete({id});
+            console.log(findAppointment)
+            return deletedAppointment;
+        }
     }
     
 }

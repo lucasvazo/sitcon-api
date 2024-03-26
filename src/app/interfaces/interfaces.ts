@@ -40,7 +40,7 @@ export interface IProfissionalAtende {
 };
 
 export interface IAgendamento {
-    id: number;
+    id?: number;
     dataAgendamento: Date;
     dataCriacao: Date;
     status: 'ativo' | 'cancelado' | 'reagendado';
