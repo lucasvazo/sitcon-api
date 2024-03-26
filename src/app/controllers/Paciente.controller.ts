@@ -3,13 +3,12 @@ import PacienteService from '../services/Paciente.service';
 
 class PacienteController {
 
-    async listAllPatients(req: Request, res: Response): Promise<Response> {
+    async listAllPatients( _req: Request, res: Response ): Promise<Response> {
         try {
-            const pacientes = await PacienteService.getAllPacientes();
-            return res.json(pacientes);
-        } catch (err) {
-            console.log(err)
-            return res.status(500).json({ error: 'Internal server error' });
+            const patients = await PacienteService.getAllPacientes();
+            return res.json(patients);
+        } catch (error: any) {
+            return res.status(404).json({ error: error.message });
         }
     }
 
