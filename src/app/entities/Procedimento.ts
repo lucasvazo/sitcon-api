@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import Agendamento from './Agendamento';
 import ProfissionalAtende from './ProfissionalAtende';
 import TipoSolicitacao from './TipoSolicitacao';
@@ -14,8 +14,9 @@ class Procedimento {
     @Column({ type: "enum", enum: ["ativo", "inativo"], default: "ativo"})
     status: "ativo" | "inativo";
 
-    @ManyToOne(() => TipoSolicitacao, (tipo_solicitacao) => tipo_solicitacao.procedimentos)
-    tipo_solicitacao: TipoSolicitacao;
+    @ManyToOne(() => TipoSolicitacao, (tipoSolicitacao) => tipoSolicitacao.procedimentos)
+    @JoinColumn({ name: 'tipo_id' })
+    tipoSolicitacao: TipoSolicitacao;
 
     @OneToMany(() => ProfissionalAtende, (profissionalAtende) => profissionalAtende.id )
     atendimentosIds?: ProfissionalAtende[];

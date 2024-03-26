@@ -12,7 +12,7 @@ class TipoSolicitacao {
     @Column({ type: "enum", enum: ["ativo", "inativo"], default: "ativo", })
     status: "ativo" | "inativo";
 
-    @OneToMany(() => Procedimento, (procedimento) => procedimento.tipo_solicitacao)
+    @OneToMany(() => Procedimento, (procedimento) => procedimento.tipoSolicitacao)
     procedimentos?: Procedimento[];
 }
 
