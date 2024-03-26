@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 import Profissional from "./Profissional";
 import Procedimento from "./Procedimento";
 
@@ -10,11 +10,13 @@ class ProfissionalAtende {
     @Column({ type: "enum", enum: ["ativo", "inativo"], default: "ativo"})
     status: "ativo" | "inativo";
   
-    @ManyToOne(() => Profissional, (profissional) => profissional.atendimentosIds)
-    profissional: Profissional;
-  
-    @ManyToOne(() => Procedimento, (procedimento) => procedimento.atendimentosIds)
-    procedimento: Procedimento;
+    @ManyToOne(() => Profissional, (profissionalId) => profissionalId.atendimentosIds)
+    @JoinColumn({ name: 'profissional_id' })
+    profissionalId: Profissional;
+
+    @ManyToOne(() => Procedimento, (procedimentoId) => procedimentoId.atendimentosIds)
+    @JoinColumn({ name: 'procedimento_id' })
+    procedimentoId: Procedimento;
 
 }
 
