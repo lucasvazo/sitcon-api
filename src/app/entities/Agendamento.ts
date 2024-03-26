@@ -3,7 +3,7 @@ import Paciente from './Paciente';
 import Procedimento from './Procedimento';
 import Profissional from './Profissional';
 
-@Entity()
+@Entity('agendamento')
 class Agendamento {
     @PrimaryGeneratedColumn()
     id: number;
