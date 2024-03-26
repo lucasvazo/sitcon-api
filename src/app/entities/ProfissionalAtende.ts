@@ -3,7 +3,7 @@ import Profissional from "./Profissional";
 import Procedimento from "./Procedimento";
 
 @Entity('profissional_atende')
-class ProfissionalAtende extends BaseEntity {
+class ProfissionalAtende {
     @PrimaryGeneratedColumn()
     id: number;
   

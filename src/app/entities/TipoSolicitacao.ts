@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 't
 import Procedimento from './Procedimento';
 
 @Entity('tipo_solicitacao')
-class TipoSolicitacao extends BaseEntity {
+class TipoSolicitacao {
     @PrimaryGeneratedColumn()
     id: number;
   
@@ -12,7 +12,7 @@ class TipoSolicitacao extends BaseEntity {
     @Column({ type: "enum", enum: ["ativo", "inativo"], default: "ativo", })
     status: "ativo" | "inativo";
 
-    @OneToMany(() => Procedimento, (procedimento) => procedimento.tipoId)
+    @OneToMany(() => Procedimento, (procedimento) => procedimento.tipo_solicitacao)
     procedimentos?: Procedimento[];
 }
 

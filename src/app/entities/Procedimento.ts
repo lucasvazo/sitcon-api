@@ -4,7 +4,7 @@ import ProfissionalAtende from './ProfissionalAtende';
 import TipoSolicitacao from './TipoSolicitacao';
 
 @Entity('procedimento')
-class Procedimento extends BaseEntity {
+class Procedimento {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -14,9 +14,8 @@ class Procedimento extends BaseEntity {
     @Column({ type: "enum", enum: ["ativo", "inativo"], default: "ativo"})
     status: "ativo" | "inativo";
 
-    @ManyToOne(() => TipoSolicitacao, (tipoSolicitacao) => tipoSolicitacao.procedimentos)
-    @Column({ name: "tipo_id" })
-    tipoId: TipoSolicitacao;
+    @ManyToOne(() => TipoSolicitacao, (tipo_solicitacao) => tipo_solicitacao.procedimentos)
+    tipo_solicitacao: TipoSolicitacao;
 
     @OneToMany(() => ProfissionalAtende, (profissionalAtende) => profissionalAtende.id )
     atendimentosIds?: ProfissionalAtende[];

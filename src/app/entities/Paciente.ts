@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 't
 import Agendamento from './Agendamento';
 
 @Entity('paciente')
-class Paciente extends BaseEntity {
+class Paciente {
     @PrimaryGeneratedColumn('increment')
     id: number;
 
@@ -15,7 +15,7 @@ class Paciente extends BaseEntity {
     @Column({ type: "varchar", length: 20, unique: true, nullable: false })
     cpf: string;
 
-    @Column({ type: "enum", default: 'ativo' })
+    @Column({ type: "enum", enum: ["ativo", "inativo"], default: 'ativo' })
     status: "ativo" | "inativo";
     
     @OneToMany(() => Agendamento, agendamento => agendamento.pacienteId)

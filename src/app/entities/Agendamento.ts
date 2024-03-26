@@ -4,7 +4,7 @@ import Procedimento from './Procedimento';
 import Profissional from './Profissional';
 
 @Entity()
-class Agendamento extends BaseEntity {
+class Agendamento {
     @PrimaryGeneratedColumn()
     id: number;
 
