@@ -3,7 +3,7 @@ import PacienteService from '../services/Paciente.service';
 
 class PacienteController {
 
-    async listAllPatients( _req: Request, res: Response ): Promise<Response> {
+    static async listAllPatients( _req: Request, res: Response ): Promise<Response> {
         try {
             const patients = await PacienteService.getAllPacientes();
             return res.json(patients);
