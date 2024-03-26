@@ -9,7 +9,7 @@
       "outDir": "./build",
       "rootDir": "src",
       "strict": true,
-      "strictPropertyInitialization": true,
+      "strictPropertyInitialization": false,
       "esModuleInterop": true,
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,

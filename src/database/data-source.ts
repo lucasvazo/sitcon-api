@@ -1,7 +1,13 @@
-import "reflect-metadata";
-import { DataSource } from "typeorm";
-import "dotenv/config";
 import { CreateTables1711397155013 } from "./migrations/1711397155013-CreateTables";
+import { DataSource } from "typeorm";
+import Paciente from "../app/entities/Paciente";
+import Profissional from "../app/entities/Profissional";
+import Procedimento from "../app/entities/Procedimento";
+import ProfissionalAtende from "../app/entities/ProfissionalAtende";
+import TipoSolicitacao from "../app/entities/TipoSolicitacao";
+import Agendamento from "../app/entities/Agendamento";
+import "reflect-metadata";
+import "dotenv/config";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -12,7 +18,7 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_NAME,
     // synchronize: true,
     logging: false,
-    entities: [],
+    entities: [ Paciente, Profissional, Procedimento, ProfissionalAtende, TipoSolicitacao, Agendamento ],
     migrations: [ CreateTables1711397155013 ],
     subscribers: [],
 });
